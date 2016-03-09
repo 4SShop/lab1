@@ -4,7 +4,7 @@ public class WhiteTea extends TeaBeverage {
 	private String description;
 
 	public WhiteTea() {
-		description = "White Tea";
+		description =super.description+ "White Tea";
 	}
 	
 	public String getDescription() {

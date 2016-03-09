@@ -95,11 +95,8 @@ public class Main {
 		 * How do I get the description of each order instead of doing this
 		 * stupid thing forever (except for printing the args)?
 		 */
-		if (order instanceof BeverageWithIngredient) {
-			((BeverageWithIngredient) order).getDescription();
-		} else if (order instanceof Espresso) {
-			((Espresso) order).getDescription();
-		}
+		//we move getDescription from a actual drink to Beverage
+		order.getDescription();
 		// and so on...
 
 		DecimalFormat df = new DecimalFormat(".0");

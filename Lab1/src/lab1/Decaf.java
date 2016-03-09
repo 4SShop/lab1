@@ -4,7 +4,7 @@ public class Decaf extends CoffeeBeverage {//new coffee Decaf
 	private String description;
 
 	public Decaf() {
-		description = "Decaf";
+		description =super.description+ "Decaf";
 	}
 
 	public String getDescription() {

@@ -4,7 +4,7 @@ public class HouseBlend extends CoffeeBeverage {
 	private String description;
 	
 	public HouseBlend() {
-		description = "HouseBlend";
+		description =super.description+ "HouseBlend";
 	}
 	
 	public String getDescription() {
