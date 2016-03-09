@@ -1,9 +1,9 @@
 package lab1;
 
 public class Beverage {
-	protected SizeFactor sizeFactor;
+	protected SizeFactor sizeFactor;//composition
 
-	public double cost() {
+	public double cost() {//no cost with empty cup
 		return 0;
 	}
 }

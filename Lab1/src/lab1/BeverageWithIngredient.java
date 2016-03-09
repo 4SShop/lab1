@@ -1,7 +1,7 @@
 package lab1;
 
 public class BeverageWithIngredient extends Beverage {
-	private Beverage drink;
+	private Beverage drink;	//composition
 	protected String description;
 
 	public BeverageWithIngredient(Beverage drink) {
