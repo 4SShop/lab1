@@ -9,6 +9,7 @@ public class CoffeeBeverage extends Beverage {
 
 	public void setSize(String size) {
 		this.size = size;
+		description+=" "+size;
 	}
 
 	public double cost() {

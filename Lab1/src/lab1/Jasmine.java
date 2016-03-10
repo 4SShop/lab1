@@ -3,7 +3,7 @@ package lab1;
 public class Jasmine extends BeverageWithIngredient {
 	public Jasmine(Beverage drink) {
 		super(drink);
-		description += " jasmine";
+		description =drink.description+ " jasmine";
 	}
 
 	public double cost() {
