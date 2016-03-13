@@ -1,8 +1,24 @@
-package lab1;
+package factory;
+
+import abstractEntity.Beverage;
+import abstractEntity.BeverageWithIngredient;
+import abstractEntity.CoffeeBeverage;
+import abstractEntity.TeaBeverage;
+import entity.Chocolate;
+import entity.Decaf;
+import entity.Espresso;
+import entity.Ginger;
+import entity.GreenTea;
+import entity.HouseBlend;
+import entity.Jasmine;
 /*
  * We provide a BeverageFactory interface and FactoryCoffee, BeverageTea which implement the interface
  * Through the Client, one of two class will be initiated and the beverage can be produced by accordingly factory
  */
+import entity.Milk;
+import entity.RedTea;
+import entity.WhipCream;
+import entity.WhiteTea;
 
 public interface BeverageFactory {
 	//create the ingredient of the beverage

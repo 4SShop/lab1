@@ -1,4 +1,7 @@
-package lab1;
+package entity;
+
+import abstractEntity.Beverage;
+import abstractEntity.BeverageWithIngredient;
 
 public class Jasmine extends BeverageWithIngredient {
 	public Jasmine(Beverage drink) {

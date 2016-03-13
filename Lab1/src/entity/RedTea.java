@@ -1,10 +1,12 @@
-package lab1;
+package entity;
 
-public class HouseBlend extends CoffeeBeverage {
+import abstractEntity.TeaBeverage;
+
+public class RedTea extends TeaBeverage {
 	private String description;
 	
-	public HouseBlend() {
-		description =super.description+ "HouseBlend";
+	public RedTea() {
+		description =super.description+ "Red Tea";
 	}
 	
 	public String getDescription() {
