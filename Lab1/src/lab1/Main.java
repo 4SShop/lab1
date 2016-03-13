@@ -1,106 +1,85 @@
 package lab1;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
 	public static void main(String[] args) {
-		String[] disArr = new String[args.length];
-		for (int j = 0; j < args.length; j++) {
-			disArr[j] = args[j].toLowerCase();
+		//String[] disArr = new String[args.length];
+		String[] disArr = {"2", "Mocha", "small", "milk", "milk", ";","White", "Tea", "large", "Ginger"};
+		Client client = new Client();
+		ArrayList<String[]> list = splitArgs(disArr);
+
+		ArrayList<Beverage> order = new ArrayList<Beverage>();
+		for(int i = 0; i< list.size(); i++) {
+			client.setDisArr(list.get(i));
+			order.add(client.getBeverage());
+			/**
+			 * How do I get the description of each order instead of doing this
+			 * stupid thing forever (except for printing the args)?
+			 */
+			//we move getDescription from a actual drink to Beverage
+			order.get(i).getDescription();
+			// and so on...
+
+			DecimalFormat df = new DecimalFormat(".0");
+			System.out.println("The total cost of your order is: "
+					+ df.format(order.get(i).cost()));
 		}
-
-		int i;
-		for (i = 0; i < disArr.length; i++)
-			if (disArr[i].equals("small") || disArr[i].equals("medium")
-					|| disArr[i].equals("large"))
-				break;
-
-		if (i >= disArr.length) {
-			System.out.println("Must set a size!");
-			return;
-		}
-
-		String beveStr;
-		if (i == 2) {
-			beveStr = disArr[0] + " " + disArr[1];
-		} else {
-			beveStr = disArr[0];
-		}
-
-		Beverage order;
-		if (beveStr.equals("espresso")) {
-			order = new CoffeeBeverage();
-			order = new Espresso();
-			((CoffeeBeverage) order).setSize(disArr[i]);
-		} else if (beveStr.equals("houseblend")) {
-			order = new CoffeeBeverage();
-			order = new HouseBlend();
-			((CoffeeBeverage) order).setSize(disArr[i]);
-		} else if (beveStr.equals("mocha")) {
-			order = new Espresso();
-			((CoffeeBeverage) order).setSize(disArr[i]);
-			order = new Chocolate(order);
-		} else if (beveStr.equals("latte")) {
-			order = new Espresso();
-			((CoffeeBeverage) order).setSize(disArr[i]);
-			order = new Milk(order);
-		} else if (beveStr.equals("cappuccino")) {
-			order = new Espresso();
-			((CoffeeBeverage) order).setSize(disArr[i]);
-			order = new WhipCream(order);
-		} else if (beveStr.equals("green tea")) {
-			order = new GreenTea();
-			((TeaBeverage) order).setSize(disArr[i]);
-		} else if (beveStr.equals("red tea")) {
-			order = new RedTea();
-			((TeaBeverage) order).setSize(disArr[i]);
-		} else if (beveStr.equals("white tea")) {
-			order = new WhiteTea();
-			((TeaBeverage) order).setSize(disArr[i]);
-		} else if (beveStr.equals("flower tea")) {
-			order = new GreenTea();
-			((TeaBeverage) order).setSize(disArr[i]);
-			order = new Jasmine(order);
-		} else if (beveStr.equals("ginger tea")) {
-			order = new GreenTea();
-			((TeaBeverage) order).setSize(disArr[i]);
-			order = new Ginger(order);
-		} else if (beveStr.equals("tea latte")) {
-			order = new RedTea();
-			((TeaBeverage) order).setSize(disArr[i]);
-			order = new Milk(order);
-		} else {
-			System.out.println("Illegal input: " + beveStr);
-			return;
-		}
-
-		for (i++; i < disArr.length; i++) {
-			if (disArr[i].equals("chocolate")) {
-				order = new Chocolate(order);
-			} else if (disArr[i].equals("ginger")) {
-				order = new Ginger(order);
-			} else if (disArr[i].equals("milk")) {
-				order = new Milk(order);
-			} else if (disArr[i].equals("jasmine")) {
-				order = new Jasmine(order);
-			} else if (disArr[i].equals("whip")) {
-				i++;
-				order = new WhipCream(order);
-			} else {
-				System.out.println("Illegal input: " + disArr[i]);
+	}
+	/*
+	 * deal with the input string array
+	 * split the order into simple order style
+	 */
+	public static ArrayList<String[]> splitArgs(String[] args) {
+		ArrayList<String[]> re = new ArrayList<String[]>();
+		ArrayList<Integer> index = new ArrayList<Integer>();
+		//deal with multiple ordering
+		for(int i = 0; i < args.length; i++) {
+			if(args[i].equals(";")) {
+				index.add(i);
+			}
+			if(i == args.length - 1) {
+				index.add(i+1);
 			}
 		}
+		//deal with multiple same cups
+		int temp = 0;
+		for(int i = 0; i<index.size(); i++) {
+			boolean number = isNumber(args[temp]);
+			int size = (number)?(index.get(i)-temp-1):(index.get(i)-temp);
+			String[] arguments = new String[size];
 
-		/**
-		 * How do I get the description of each order instead of doing this
-		 * stupid thing forever (except for printing the args)?
-		 */
-		//we move getDescription from a actual drink to Beverage
-		order.getDescription();
-		// and so on...
+			for(int j = temp; j < index.get(i); j++) {
+				if(number) {
+					if(j != temp) {
+						arguments[j-temp-1] = args[j];
+					}
+				}
+				else {
+					arguments[j-temp] = args[j];
+				}
 
-		DecimalFormat df = new DecimalFormat(".0");
-		System.out.println("The total cost of your order is: "
-				+ df.format(order.cost()));
+			}
+			if(number) {
+				for(int j = 1; j < Integer.parseInt(args[temp]); j++) {
+					re.add(arguments);
+				}
+			}
+			re.add(arguments);
+			temp = index.get(i) + 1;
+		}
+		return re;
+	}
+	//determining whether the first string is a number
+	public static boolean isNumber(String str) {
+		Pattern pattern = Pattern.compile("[0-9]*"); 
+		Matcher isNum = pattern.matcher(str);
+		if( !isNum.matches() ){
+			return false; 
+		} 
+		return true; 
 	}
 }

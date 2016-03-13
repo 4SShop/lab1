@@ -2,7 +2,7 @@ package lab1;
 
 public class CoffeeBeverage extends Beverage {
 	private String size;
-    protected String description;
+    protected String description="";
 	public CoffeeBeverage() {
 		super.sizeFactor = new CoffeeBased();
 		this.description=super.description+" "+size;//write the size into description
