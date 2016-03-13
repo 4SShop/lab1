@@ -5,7 +5,6 @@ public class Chocolate extends BeverageWithIngredient {
 		super(drink);
 		description += " chocolate";
 	}
-
 	public double cost() {
 		return 0.3 + super.cost();
 	}
