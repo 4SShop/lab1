@@ -2,10 +2,10 @@ package lab1;
 
 public class BeverageWithIngredient extends Beverage {
 	private Beverage drink;	//composition
-	protected String description="";
 
 	public BeverageWithIngredient(Beverage drink) {
 		this.drink = drink;
+		description=drink.description;
 	}
 	
 	public String getDescription(){
