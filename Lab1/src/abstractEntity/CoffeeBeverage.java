@@ -1,4 +1,6 @@
-package lab1;
+package abstractEntity;
+
+import daoImpl.CoffeeBased;
 
 public class CoffeeBeverage extends Beverage {
 	private String size;

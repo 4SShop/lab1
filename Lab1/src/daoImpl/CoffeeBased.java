@@ -1,4 +1,6 @@
-package lab1;
+package daoImpl;
+
+import dao.SizeFactor;
 
 public class CoffeeBased implements SizeFactor {
 

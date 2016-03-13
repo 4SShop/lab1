@@ -1,4 +1,4 @@
-package lab1;
+package dao;
 
 public interface SizeFactor {
 	public double sizeCost(String size);//get the size of cup

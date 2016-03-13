@@ -1,9 +1,11 @@
-package lab1;
+package test;
 
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import daoImpl.TeaBased;
 
 
 public class TeaBaseTest {

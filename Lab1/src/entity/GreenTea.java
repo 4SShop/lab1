@@ -1,4 +1,6 @@
-package lab1;
+package entity;
+
+import abstractEntity.TeaBeverage;
 
 public class GreenTea extends TeaBeverage {
 

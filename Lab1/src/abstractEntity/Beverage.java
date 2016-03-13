@@ -1,4 +1,6 @@
-package lab1;
+package abstractEntity;
+
+import dao.SizeFactor;
 
 public class Beverage {
 	protected SizeFactor sizeFactor;//composition

@@ -1,4 +1,4 @@
-package lab1;
+package abstractEntity;
 
 public class BeverageWithIngredient extends Beverage {
 	private Beverage drink;	//composition

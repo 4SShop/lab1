@@ -1,4 +1,11 @@
-package lab1;
+package factory;
+
+import abstractEntity.Beverage;
+import entity.Chocolate;
+import entity.Ginger;
+import entity.Jasmine;
+import entity.Milk;
+import entity.WhipCream;
 
 /*Client class
  *This class is instantiated by Main 
