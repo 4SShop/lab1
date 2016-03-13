@@ -3,14 +3,9 @@ package entity;
 import abstractEntity.CoffeeBeverage;
 
 public class Espresso extends CoffeeBeverage {
-	private String description;
 	
 	public Espresso() {
 		description =super.description+ "Esspresso";
-	}
-	
-	public String getDescription() {
-		return description;
 	}
 
 	public double cost() {
