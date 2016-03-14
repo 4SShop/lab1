@@ -21,6 +21,7 @@ public class CoffeeBasedTest {
 		Assert.assertEquals(0.7, cb.sizeCost("medium"), 0);
 		Assert.assertEquals(1.0, cb.sizeCost("large"), 0);
 		Assert.assertEquals(1.3, cb.sizeCost("grant"), 0);
+		
 	}
 
 }

@@ -9,6 +9,6 @@ public class Decaf extends CoffeeBeverage {//new coffee Decaf
 	}
 
 	public double cost() {
-		return super.cost() + 1.0;
+		return super.cost() + 0.5;
 	}
 }
