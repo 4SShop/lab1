@@ -109,6 +109,10 @@ abstract class FactoryTea extends Factory implements BeverageFactory {
 					re = addMilk(beverage);
 				else if(type[i].equals("jasmine"))
 					re = addJasmine(beverage);
+				else if(type[i].equals("whipcream"))
+					re = addWhipCream(beverage);
+				else if(type[i].equals("chocolate"))
+					re = addChocolate(beverage);
 				else {
 					System.out.println("Wrong input!");
 					System.exit(0);
