@@ -9,10 +9,6 @@ public class BeverageWithIngredient extends Beverage {
 		description=drink.description;
 	}
 	
-	public String getDescription(){
-		return description;
-	}
-	
 	public double cost() {
 		return drink.cost();
 	}

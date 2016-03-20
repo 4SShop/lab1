@@ -12,7 +12,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		//String[] disArr = new String[args.length];
-		String[] disArr = {"2", "Mocha", "small", "mik", "milk", ";","White", "Tea", "large", "Ginger"};
+		String[] disArr = {"2", "Mocha", "small","milk", ";","White", "Tea", "large", "Ginger"};
 		if(args == null){
 			System.out.println("The input can not be empty");
 			return;

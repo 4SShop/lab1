@@ -44,7 +44,7 @@ public class Client {
 
 		if (i >= disArr.length) {
 			System.out.println("Must set a size!");
-			
+			System.exit(0);
 		}
 
 		String beveStr;

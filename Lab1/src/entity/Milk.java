@@ -8,7 +8,7 @@ public class Milk extends BeverageWithIngredient {
 		super(drink);
 		description += " milk";
 	}
-
+	//÷ÿ–¥cost∑Ω∑®
 	public double cost() {
 		return 0.3 + super.cost();
 	}

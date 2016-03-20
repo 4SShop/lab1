@@ -7,14 +7,11 @@ public class TeaBeverage extends Beverage {
 	public TeaBeverage() {
 		super.sizeFactor = new TeaBased();
 	}
-
-	public String getDescription(){
-		return description;
-	}
+	//设定size
 	public void setSize(String size) {
 		this.size = size;
 	}
-
+	//重写cost方法，最终获取的cost将是一层层向上累计后获得的结果
 	public double cost() {
 		return super.cost() + super.sizeFactor.sizeCost(size);
 	}

@@ -8,7 +8,7 @@ public class WhipCream extends BeverageWithIngredient {
 		super(drink);
 		description += " whip";
 	}
-
+	//÷ÿ–¥cost∑Ω∑®
 	public double cost() {
 		return 0.3 + super.cost();
 	}

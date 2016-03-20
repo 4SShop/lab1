@@ -8,7 +8,7 @@ public class Jasmine extends BeverageWithIngredient {
 		super(drink);
 		description += " jasmine";
 	}
-
+	//÷ÿ–¥cost∑Ω∑®
 	public double cost() {
 		return 0.5 + super.cost();
 	}
