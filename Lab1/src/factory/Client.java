@@ -1,11 +1,6 @@
 package factory;
 
 import abstractEntity.Beverage;
-import entity.Chocolate;
-import entity.Ginger;
-import entity.Jasmine;
-import entity.Milk;
-import entity.WhipCream;
 
 /*Client class
  *This class is instantiated by Main 
@@ -18,6 +13,7 @@ import entity.WhipCream;
 public class Client {
 	//factory determined by input 
 	private BeverageFactory factory;
+	private Factory abstractFactory = new Factory();
 	//ordered beverage
 	private Beverage beverage;
 	//input commands
@@ -70,27 +66,27 @@ public class Client {
 		} 
 		else if (beveStr.equals("mocha")) {
 			createBeverage(new FactoryEspresso(), disArr[index], ingre);
-			beverage = new Chocolate(beverage);
+			beverage = abstractFactory.addChocolate(beverage);
 		} 
 		else if (beveStr.equals("latte")) {
 			createBeverage(new FactoryEspresso(), disArr[index], ingre);
-			beverage = new Milk(beverage);
+			beverage = abstractFactory.addMilk(beverage);
 		} 
 		else if (beveStr.equals("cappuccino")) {
 			createBeverage(new FactoryEspresso(), disArr[index], ingre);
-			beverage = new WhipCream(beverage);
+			beverage = abstractFactory.addWhipCream(beverage);
 		} 
 		else if(beveStr.equals("decaf mocha")) {
 			createBeverage(new FactoryDecaf(), disArr[index], ingre);
-			beverage = new Chocolate(beverage);
+			beverage = abstractFactory.addChocolate(beverage);
 		}
 		else if(beveStr.equals("decaf latte")) {
 			createBeverage(new FactoryDecaf(), disArr[index], ingre);
-			beverage = new Milk(beverage);
+			beverage = abstractFactory.addMilk(beverage);
 		}
 		else if(beveStr.equals("decaf cappuccino")) {
 			createBeverage(new FactoryDecaf(), disArr[index], ingre);
-			beverage = new WhipCream(beverage);
+			beverage = abstractFactory.addWhipCream(beverage);
 		}
 		else if (beveStr.equals("green tea")) {
 			createBeverage(new FactoryGreenTea(), disArr[index], ingre);
@@ -103,15 +99,15 @@ public class Client {
 		} 
 		else if (beveStr.equals("flower tea")) {
 			createBeverage(new FactoryGreenTea(), disArr[index], ingre);
-			beverage = new Jasmine(beverage);
+			beverage = abstractFactory.addJasmine(beverage);
 		} 
 		else if (beveStr.equals("ginger tea")) {
 			createBeverage(new FactoryGreenTea(), disArr[index], ingre);
-			beverage = new Ginger(beverage);
+			beverage = abstractFactory.addGinger(beverage);
 		} 
 		else if (beveStr.equals("tea latte")) {
 			createBeverage(new FactoryRedTea(), disArr[index], ingre);
-			beverage = new Milk(beverage);
+			beverage = abstractFactory.addMilk(beverage);
 		} 
 		else {
 			System.out.println("Illegal input: " + beveStr);
@@ -164,7 +160,5 @@ public class Client {
 		if(temp != null) {
 			beverage = temp;	
 		}
-		
-		
 	}
 }

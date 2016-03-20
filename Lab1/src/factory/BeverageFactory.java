@@ -26,36 +26,54 @@ public interface BeverageFactory {
 	//create the beverage
 	abstract Beverage createBeverage(String size);
 	abstract void create();
+	
+	
+	
 }
-abstract class FactoryCoffee implements BeverageFactory {
+class Factory {
+	public BeverageWithIngredient addMilk(Beverage beverage) {
+		return new Milk(beverage);
+	}
+	public BeverageWithIngredient addChocolate(Beverage beverage) {
+		return new Chocolate(beverage);
+	}
+	public BeverageWithIngredient addGinger(Beverage beverage) {
+		return new Ginger(beverage);
+	}
+	public BeverageWithIngredient addJasmine(Beverage beverage) {
+		return new Jasmine(beverage);
+	}
+	public BeverageWithIngredient addWhipCream(Beverage beverage) {
+		return new WhipCream(beverage);
+	}
+}
+abstract class FactoryCoffee extends Factory implements BeverageFactory {
 	private Beverage beverage;
 	protected CoffeeBeverage coffee;
 
 	@Override
 	public BeverageWithIngredient createIngredient(String[] type) {
 		// TODO 自动生成的方法存根
-
 		BeverageWithIngredient re = null;
 		//Add ingredient by input
 		if(type != null) {
 			for(int i=0; i<type.length; i++) {
 				if(type[i].equals("ginger"))
-					re = new Ginger(beverage);
+					re = addGinger(beverage);
 				else if(type[i].equals("milk"))
-					re = new Milk(beverage);
+					re = addMilk(beverage);
 				else if(type[i].equals("jasmine"))
-					re = new Jasmine(beverage);
+					re = addJasmine(beverage);
 				else if(type[i].equals("whipcream"))
-					re = new WhipCream(beverage);
+					re = addWhipCream(beverage);
 				else if(type[i].equals("chocolate"))
-					re = new Chocolate(beverage);
+					re = addChocolate(beverage);
 				else {
 					System.out.println("Wrong input!");
 					System.exit(0);
 				}
-					
-				beverage = re;
 
+				beverage = re;
 			}
 		}
 		return re;
@@ -75,7 +93,7 @@ abstract class FactoryCoffee implements BeverageFactory {
 	}
 
 }
-abstract class FactoryTea implements BeverageFactory {
+abstract class FactoryTea extends Factory implements BeverageFactory {
 	private Beverage beverage;
 	protected TeaBeverage tea;
 	@Override
@@ -86,15 +104,11 @@ abstract class FactoryTea implements BeverageFactory {
 		if(type != null) {
 			for(int i=0; i<type.length; i++) {
 				if(type[i].equals("ginger"))
-					re = new Ginger(beverage);
+					re = addGinger(beverage);
 				else if(type[i].equals("milk"))
-					re = new Milk(beverage);
+					re = addMilk(beverage);
 				else if(type[i].equals("jasmine"))
-					re = new Jasmine(beverage);
-				else if(type[i].equals("whipcream"))
-					re = new WhipCream(beverage);
-				else if(type[i].equals("chocolate"))
-					re = new Chocolate(beverage);
+					re = addJasmine(beverage);
 				else {
 					System.out.println("Wrong input!");
 					System.exit(0);

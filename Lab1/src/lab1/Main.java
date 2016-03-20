@@ -31,8 +31,7 @@ public class Main {
 			System.out.println("The total cost of your order is: "
 					+ df.format(order.get(i).cost()));
 		}
-
-		if(args == null){
+		if(args.length == 0){
 			System.out.println("The input can not be empty");
 			return;
 		}
