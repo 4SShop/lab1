@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import factory.Client;
+import abstractEntity.Beverage;
+
+
 public class Main {
 	public static void main(String[] args) {
-		//String[] disArr = new String[args.length];
-		String[] disArr = {"2", "Mocha", "small", "milk", "milk", ";","White", "Tea", "large", "Ginger"};
+		//String[] disArr = {"2", "Mocha", "small", "milk", "milk", ";","White", "Tea", "large", "Ginger"};
 		Client client = new Client();
-		ArrayList<String[]> list = splitArgs(disArr);
+		ArrayList<String[]> list = splitArgs(args);
 
 		ArrayList<Beverage> order = new ArrayList<Beverage>();
 		for(int i = 0; i< list.size(); i++) {
@@ -28,6 +31,46 @@ public class Main {
 			System.out.println("The total cost of your order is: "
 					+ df.format(order.get(i).cost()));
 		}
+
+		if(args == null){
+			System.out.println("The input can not be empty");
+			return;
+		}
+		double[] costs = calculate(list,client);
+		DecimalFormat df = new DecimalFormat(".0");
+		for(int i = 1 ; i < costs.length ; i++){
+			System.out.println("The cost of your "+(i+1)+"th order is: "
+					+ df.format(costs[i]));
+		}
+		System.out.println("The total cost of your order is "+df.format(costs[0]));
+	}
+	/*
+	 * the method to calculate the total cost of the order
+	 * costs[0]return the total cost
+	 */
+	public static double[] calculate(ArrayList<String[]> list,Client client){
+		ArrayList<Beverage> order = new ArrayList<Beverage>();
+		double[] costs = new double[list.size()+1];
+		Double total = 0.0;
+		
+		for(int i = 0; i< list.size(); i++) {
+			client.setDisArr(list.get(i));
+			order.add(client.getBeverage());
+			/**
+			 * How do I get the description of each order instead of doing this
+			 * stupid thing forever (except for printing the args)?
+			 */
+			//we move getDescription from a actual drink to Beverage
+			order.get(i).getDescription();
+			// and so on...
+			total += order.get(i).cost();
+			costs[i+1] = order.get(i).cost();
+			
+		}
+		costs[0] = total;
+		
+		return costs;
+
 	}
 	/*
 	 * deal with the input string array

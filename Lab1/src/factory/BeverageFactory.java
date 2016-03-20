@@ -1,8 +1,24 @@
-package lab1;
+package factory;
+
+import abstractEntity.Beverage;
+import abstractEntity.BeverageWithIngredient;
+import abstractEntity.CoffeeBeverage;
+import abstractEntity.TeaBeverage;
+import entity.Chocolate;
+import entity.Decaf;
+import entity.Espresso;
+import entity.Ginger;
+import entity.GreenTea;
+import entity.HouseBlend;
+import entity.Jasmine;
 /*
  * We provide a BeverageFactory interface and FactoryCoffee, BeverageTea which implement the interface
  * Through the Client, one of two class will be initiated and the beverage can be produced by accordingly factory
  */
+import entity.Milk;
+import entity.RedTea;
+import entity.WhipCream;
+import entity.WhiteTea;
 
 public interface BeverageFactory {
 	//create the ingredient of the beverage
@@ -18,22 +34,29 @@ abstract class FactoryCoffee implements BeverageFactory {
 	@Override
 	public BeverageWithIngredient createIngredient(String[] type) {
 		// TODO 自动生成的方法存根
-		
+
 		BeverageWithIngredient re = null;
 		//Add ingredient by input
-		for(int i=0; i<type.length; i++) {
-			if(type[i].equals("ginger"))
-				re = new Ginger(beverage);
-			else if(type[i].equals("milk"))
-				re = new Milk(beverage);
-			else if(type[i].equals("jasmine"))
-				re = new Jasmine(beverage);
-			else if(type[i].equals("whipcream"))
-				re = new WhipCream(beverage);
-			else if(type[i].equals("chocolate"))
-				re = new Chocolate(beverage);
-			else
-				re = null;
+		if(type != null) {
+			for(int i=0; i<type.length; i++) {
+				if(type[i].equals("ginger"))
+					re = new Ginger(beverage);
+				else if(type[i].equals("milk"))
+					re = new Milk(beverage);
+				else if(type[i].equals("jasmine"))
+					re = new Jasmine(beverage);
+				else if(type[i].equals("whipcream"))
+					re = new WhipCream(beverage);
+				else if(type[i].equals("chocolate"))
+					re = new Chocolate(beverage);
+				else {
+					System.out.println("Wrong input!");
+					System.exit(0);
+				}
+					
+				beverage = re;
+
+			}
 		}
 		return re;
 	}
@@ -60,19 +83,24 @@ abstract class FactoryTea implements BeverageFactory {
 		// TODO 自动生成的方法存根
 		//Add ingredient by input
 		BeverageWithIngredient re = null;
-		for(int i=0; i<type.length; i++) {
-			if(type[i].equals("ginger"))
-				re = new Ginger(beverage);
-			else if(type[i].equals("milk"))
-				re = new Milk(beverage);
-			else if(type[i].equals("jasmine"))
-				re = new Jasmine(beverage);
-			else if(type[i].equals("whipcream"))
-				re = new WhipCream(beverage);
-			else if(type[i].equals("chocolate"))
-				re = new Chocolate(beverage);
-			else
-				re = null;
+		if(type != null) {
+			for(int i=0; i<type.length; i++) {
+				if(type[i].equals("ginger"))
+					re = new Ginger(beverage);
+				else if(type[i].equals("milk"))
+					re = new Milk(beverage);
+				else if(type[i].equals("jasmine"))
+					re = new Jasmine(beverage);
+				else if(type[i].equals("whipcream"))
+					re = new WhipCream(beverage);
+				else if(type[i].equals("chocolate"))
+					re = new Chocolate(beverage);
+				else {
+					System.out.println("Wrong input!");
+					System.exit(0);
+				}
+				beverage = re;
+			}
 		}
 		return re;
 	}

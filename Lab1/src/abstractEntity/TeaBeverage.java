@@ -1,20 +1,17 @@
-package lab1;
+package abstractEntity;
+
+import DaoImpl.TeaBased;
 
 public class TeaBeverage extends Beverage {
 	private String size;
-	protected String description="";
 	public TeaBeverage() {
 		super.sizeFactor = new TeaBased();
-		this.description=super.description+" "+size;//write the size into description
 	}
-
-	public String getDescription(){
-		return description;
-	}
+	//设定size
 	public void setSize(String size) {
 		this.size = size;
 	}
-
+	//重写cost方法，最终获取的cost将是一层层向上累计后获得的结果
 	public double cost() {
 		return super.cost() + super.sizeFactor.sizeCost(size);
 	}

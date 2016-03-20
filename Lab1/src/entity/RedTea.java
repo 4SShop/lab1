@@ -1,16 +1,13 @@
-package lab1;
+package entity;
+
+import abstractEntity.TeaBeverage;
 
 public class RedTea extends TeaBeverage {
-	private String description;
 	
 	public RedTea() {
 		description =super.description+ "Red Tea";
 	}
-	
-	public String getDescription() {
-		return description;
-	}
-
+	//÷ÿ–¥cost∑Ω∑®
 	public double cost() {
 		return super.cost() + 0.8;
 	}

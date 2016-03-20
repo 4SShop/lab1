@@ -1,9 +1,12 @@
-package lab1;
+package DaoImpl;
+
+import Dao.SizeFactor;
 
 public class CoffeeBased implements SizeFactor {
 
 	@Override
 	public double sizeCost(String size) {
+		//根据不同的size返回相应的价格
 		if (size.toLowerCase().equals("small")) {
 			return 0.4;
 		} else if (size.toLowerCase().equals("medium")) {

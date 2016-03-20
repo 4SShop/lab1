@@ -1,4 +1,11 @@
-package lab1;
+package factory;
+
+import abstractEntity.Beverage;
+import entity.Chocolate;
+import entity.Ginger;
+import entity.Jasmine;
+import entity.Milk;
+import entity.WhipCream;
 
 /*Client class
  *This class is instantiated by Main 
@@ -24,6 +31,7 @@ public class Client {
 	 * @return beverage
 	 */
 	public Beverage getBeverage() {
+		beverage = new Beverage();
 		//copy with the array of the input
 		for (int j = 0; j < disArr.length; j++) {
 			disArr[j] = disArr[j].toLowerCase();
@@ -31,12 +39,12 @@ public class Client {
 		int i;
 		for (i = 0; i < disArr.length; i++)
 			if (disArr[i].equals("small") || disArr[i].equals("medium")
-					|| disArr[i].equals("large"))
+					|| disArr[i].equals("large") || disArr[i].equals("grant"))
 				break;
 
 		if (i >= disArr.length) {
 			System.out.println("Must set a size!");
-			
+			System.exit(0);
 		}
 
 		String beveStr;
@@ -46,8 +54,7 @@ public class Client {
 		else {
 			beveStr = disArr[0];
 		}
-		
-		String[] ingre = new String[disArr.length-i-1];
+		String[] ingre = (disArr.length-i-1 == 0)?null:new String[disArr.length-i-1];
 		int j = 0;
 		int index = i;
 		for(i++; i < disArr.length; i++) {
@@ -73,6 +80,18 @@ public class Client {
 			createBeverage(new FactoryEspresso(), disArr[index], ingre);
 			beverage = new WhipCream(beverage);
 		} 
+		else if(beveStr.equals("decaf mocha")) {
+			createBeverage(new FactoryDecaf(), disArr[index], ingre);
+			beverage = new Chocolate(beverage);
+		}
+		else if(beveStr.equals("decaf latte")) {
+			createBeverage(new FactoryDecaf(), disArr[index], ingre);
+			beverage = new Milk(beverage);
+		}
+		else if(beveStr.equals("decaf cappuccino")) {
+			createBeverage(new FactoryDecaf(), disArr[index], ingre);
+			beverage = new WhipCream(beverage);
+		}
 		else if (beveStr.equals("green tea")) {
 			createBeverage(new FactoryGreenTea(), disArr[index], ingre);
 		} 
@@ -140,7 +159,12 @@ public class Client {
 	private void createBeverage(BeverageFactory fac, String size, String[] in) {
 		setFactory(fac);
 		factory.create();
-		factory.createBeverage(size);
-		beverage = factory.createIngredient(in);
+		beverage = factory.createBeverage(size);
+		Beverage temp = factory.createIngredient(in);
+		if(temp != null) {
+			beverage = temp;	
+		}
+		
+		
 	}
 }
