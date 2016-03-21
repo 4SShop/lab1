@@ -19,13 +19,13 @@ public class DecafTest {
 	@Test
 	public void testCost() {
 		df.setSize("small");
-		Assert.assertEquals(1.4,df.cost(),0);
+		Assert.assertEquals(0.9,df.cost(),0);
 		df.setSize("medium");
-		Assert.assertEquals(1.7,df.cost(),0);
+		Assert.assertEquals(1.2,df.cost(),0);
 		df.setSize("large");
-		Assert.assertEquals(2.0,df.cost(),0);
+		Assert.assertEquals(1.5,df.cost(),0);
 		df.setSize("grant");
-		Assert.assertEquals(2.3,df.cost(),0);
+		Assert.assertEquals(1.8,df.cost(),0);
 	}
 
 }
